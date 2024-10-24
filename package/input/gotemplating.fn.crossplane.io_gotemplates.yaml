@@ -1,0 +1,30 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: inputs.debug.fn.crossplane.io
+spec:
+  group: debug.fn.crossplane.io
+  names:
+    categories:
+      - crossplane
+    kind: Input
+    listKind: InputList
+    plural: inputs
+    singular: input
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: Input can be used to provide input to this Function.
+          properties:
+            depth:
+              description: the object depth output should be printed for
+              type: integer
+              minimum: 1
+          required:
+            - depth
+          type: object
+      served: true
+      storage: true

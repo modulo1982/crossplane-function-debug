@@ -1,13 +1,12 @@
 """A Crossplane composition function."""
 
 import grpc
-from prettyprinter import pprint
 
 from crossplane.function import logging, resource, response
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 from crossplane.function.proto.v1 import run_function_pb2_grpc as grpcv1
 from google.protobuf.json_format import MessageToDict
-
+from prettyprinter import pprint
 
 class FunctionRunner(grpcv1.FunctionRunnerService):
     """A FunctionRunner handles gRPC RunFunctionRequests."""

@@ -1,12 +1,12 @@
 """A Crossplane composition function."""
 
 import grpc
-
-from crossplane.function import logging, resource, response
+from crossplane.function import logging, response
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 from crossplane.function.proto.v1 import run_function_pb2_grpc as grpcv1
 from google.protobuf.json_format import MessageToDict
 from prettyprinter import pprint
+
 
 class FunctionRunner(grpcv1.FunctionRunnerService):
     """A FunctionRunner handles gRPC RunFunctionRequests."""
@@ -23,7 +23,10 @@ class FunctionRunner(grpcv1.FunctionRunnerService):
         log.info("Called with RunFunctionRequest:")
 
         if req.input and "spec" in req.input:
-            pprint(MessageToDict(req, preserving_proto_field_name=True), depth=req.input["spec"]["depth"])
+            pprint(
+                MessageToDict(req, preserving_proto_field_name=True),
+                depth=req.input["spec"]["depth"],
+            )
         else:
             pprint(MessageToDict(req, preserving_proto_field_name=True))
 

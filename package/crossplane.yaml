@@ -3,4 +3,14 @@ apiVersion: meta.pkg.crossplane.io/v1beta1
 kind: Function
 metadata:
   name: function-debug
+  annotations:
+    meta.crossplane.io/maintainer: Modulo 2 <timothy@modulo2.nl>
+    meta.crossplane.io/source: github.com/modulo1982/crossplane-function-debug
+    meta.crossplane.io/license: Apache-2.0
+    meta.crossplane.io/description: Prints the RunFunctionRequest object that is available in composition pipelines.
+    meta.crossplane.io/readme: |
+      This composition function prints the RunFunctionRequest object that gets passed to it. You can place this function
+      in your composition for debugging purposes. Then, tail the log of the function-debug pod too get an insight in the
+      state your function pipeline generates.
+      [README](https://github.com/modulo1982/crossplane-function-debug) for examples and documentation.
 spec: {}
